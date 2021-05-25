@@ -69,6 +69,27 @@ response.json({
 }
 })
 
+router.patch('/:id', async (request, response) => {	
+	try{
+		const { id } = request.params
+        const likes = await posts.updateById(id, request.body)
+		response.json({
+			success : true,
+			message : "like +1 :D ",
+            data: {
+                newlikes: likes
+            }
+		})
+	}
+	catch(error){
+		response.status(400)
+		response.json({
+			succes : false,
+			message : error.message
+		})
+	}
+})
+
 
 
 module.exports = router

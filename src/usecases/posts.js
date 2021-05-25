@@ -27,8 +27,13 @@ function create({
   });
 }
 
+function updateById (id, newLike){
+  return Posts.findByIdAndUpdate(id, newLike)
+}
+
 module.exports = {
   getAll,
   getById,
-  create
+  create,
+  updateById
 };
