@@ -4,7 +4,7 @@ const replies = require('../usecases/replies')
 
 router.get('/' ,  async (request,response) => {
 	try{
-				const allReplies = await replies.getAll()
+		const allReplies = await replies.getAll()
 		response.json({
 			success : true,
 			message : 'All replies',
@@ -23,5 +23,22 @@ router.get('/' ,  async (request,response) => {
 	}
 })
 
+router.post('/', async (request, response) =>{
+    try{
+        const reply = request.body
+        await replies.postReply(reply)
+        response.json({
+            success: true,
+            message: 'Reply created :D'
+        })
+    } catch (error){
+        response.status(400)
+        response.json({
+            success: false,
+            message: error.message
+        })
+        
+    }
+})
 
 module.exports = router
