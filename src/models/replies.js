@@ -23,7 +23,7 @@ const replySchema = new mongoose.Schema({
         required: true
     },
     idPost: {
-        type : Number,
+        type : ObjectId,
         required : true
     }
 })
