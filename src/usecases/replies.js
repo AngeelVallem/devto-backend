@@ -6,8 +6,8 @@ function getAll(){
   return Replies.find()
 }
 
-function postReply(Reply){
-  return Replies.create(Reply)
+function postReply(Reply){  //{ Author, avatar, content, date, idPost }
+  return Replies.create(Reply) //{ Author, avatar, content, date, idPost }
 }
 
 // function deleteReply(id){
