@@ -7,12 +7,37 @@ const posts = require('../usecases/posts')
 
 router.get('/' ,  async (request,response) => {
 	try{
-				const allPosts = await posts.getAll()
+				
+	const allPosts = await posts.getAll()
+
 		response.json({
 			success : true,
 			message : 'All posts',
 			data : {
 				posts : allPosts
+			}
+		})
+	}
+	catch(err){
+			response.status(400)
+		response.json({
+			success : false,
+			message : 'Cant get all posts',
+			error : err.message
+		})
+	}
+})
+
+router.get('/:id' ,  async (request,response) => {
+	try{
+				
+	const post = await posts.getById(request.params.id)
+
+		response.json({
+			success : true,
+			message : 'Post',
+			data : {
+				post : post
 			}
 		})
 	}

@@ -4,6 +4,10 @@ function getAll() {
   return Posts.find();
 }
 
+function getById(id) {
+  return Posts.findById(id)
+}
+
 function create({
   author,
   avatar,
@@ -25,5 +29,6 @@ function create({
 
 module.exports = {
   getAll,
+  getById,
   create
 };
